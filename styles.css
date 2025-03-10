@@ -12,8 +12,9 @@
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    --font-heading: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Open Sans', sans-serif;
-    --font-body: 'Merriweather', Georgia, 'Times New Roman', serif;
+    --spacing-xxl: 4.5rem;
+    --font-heading: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 * {
@@ -23,6 +24,9 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: var(--font-body);
     line-height: 1.8;
     color: var(--text-primary);
@@ -39,6 +43,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.3;
     letter-spacing: -0.02em;
     color: var(--text-primary);
+    text-align: center;
 }
 
 h1 {
@@ -77,6 +82,7 @@ p {
     line-height: 1.9;
     font-weight: 400;
     font-family: var(--font-body);
+    text-align: left;
 }
 
 /* Text Emphasis */
@@ -102,11 +108,43 @@ p {
     margin-top: var(--spacing-xs);
 }
 
-/* Layout */
+/* Layout - completely revised approach */
 .container {
-    max-width: 900px;
-    padding: 0 var(--spacing-xl);
-    margin-left: 280px; /* Match the table of contents width */
+    width: 100%;
+    max-width: 800px;
+    padding: 0 var(--spacing-md);
+    margin: 0 auto;
+}
+
+main.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* When table of contents is present (subpages) */
+body:not(.index-page) .table-of-contents ~ main.container {
+    width: calc(100% - 320px); /* Account for table of contents plus some spacing */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(140px); /* Offset by half the table of contents width to center in remaining space */
+}
+
+@media (max-width: 1200px) {
+    body:not(.index-page) .table-of-contents ~ main.container {
+        transform: translateX(110px); /* Slightly less offset on smaller screens */
+    }
+}
+
+@media (max-width: 1024px) {
+    body:not(.index-page) .table-of-contents ~ main.container {
+        width: calc(100% - 300px);
+        transform: translateX(100px);
+    }
 }
 
 /* Table of Contents */
@@ -121,6 +159,8 @@ p {
     overflow-y: auto;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     font-family: var(--font-heading);
+    z-index: 100;
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .table-of-contents ul {
@@ -165,21 +205,40 @@ p {
 
 /* Hero Section */
 .hero {
+    width: 100%;
     background-color: var(--background);
     padding: var(--spacing-xl) 0;
     margin-bottom: var(--spacing-xl);
-    margin-left: 280px; /* Match the table of contents width */
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .hero .container {
-    margin-left: 0;
-    padding-left: var(--spacing-xl);
+    text-align: center;
+    max-width: 800px;
+}
+
+/* Center the hero container similar to main content when ToC is present */
+body:not(.index-page) .hero .container {
+    transform: translateX(70px);
+}
+
+@media (max-width: 1200px) {
+    body:not(.index-page) .hero .container {
+        transform: translateX(55px);
+    }
+}
+
+@media (max-width: 1024px) {
+    body:not(.index-page) .hero .container {
+        transform: translateX(50px);
+    }
 }
 
 .hero h1 {
-    text-align: left;
-    max-width: 800px;
+    margin-top: var(--spacing-lg);
 }
 
 .hero .subtitle {
@@ -190,6 +249,9 @@ p {
     margin-top: var(--spacing-sm);
     max-width: 600px;
     line-height: 1.6;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Component Demo */
@@ -197,19 +259,24 @@ p {
     background: var(--background-alt);
     border-radius: 22px;
     padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-lg) auto;
     background-color: #eaf4f4;
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-heading);
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
 }
 
 .component-demo h3 {
     font-family: var(--font-heading);
     font-size: 1.75rem;
+    text-align: center;
 }
 
 .component-demo p {
     font-family: var(--font-heading);
     font-size: 1.125rem;
+    text-align: left;
 }
 
 /* Original YouTube Radio Button Styles */
@@ -221,7 +288,7 @@ p {
     cursor: pointer;
     font-size: 0.9rem;
     color: #0f0f0f;
-    font-family: Roboto, Arial, sans-serif;
+    font-family: var(--font-heading);
 }
 
 .original .radio-circle {
@@ -291,7 +358,7 @@ p {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-heading);
     font-size: 0.9rem;
 }
 
@@ -332,7 +399,9 @@ p {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xl);
-    margin: var(--spacing-xl) 0;
+    margin: var(--spacing-xl) auto;
+    max-width: 800px;
+    width: 100%;
 }
 
 .state-diagrams figure {
@@ -382,6 +451,7 @@ li {
 
 /* Footer */
 footer {
+    width: 100%;
     background-color: var(--background-alt);
     padding: var(--spacing-lg) 0;
     margin-top: var(--spacing-xl);
@@ -390,44 +460,22 @@ footer {
     font-size: 1.125rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 1024px) {
     body {
-        font-size: 1rem;
+        padding-left: 0; /* Remove sidebar space on mobile */
     }
-
-    h1 {
-        font-size: 2.75rem;
-        letter-spacing: -0.04em;
+    
+    .table-of-contents {
+        display: none; /* Hide on mobile */
     }
-
-    h2 {
-        font-size: 2rem;
-        letter-spacing: -0.03em;
-    }
-
-    h3 {
-        font-size: 1.5rem;
-        letter-spacing: -0.02em;
-    }
-
-    p {
-        font-size: 1.125rem;
-        line-height: 1.6;
-    }
-
-    .container {
-        padding: 0 var(--spacing-sm);
-    }
-
-    .state-diagrams {
-        gap: var(--spacing-lg);
-        margin: var(--spacing-lg) 0;
-    }
-
-    .state-diagrams figcaption {
-        font-size: 1.125rem;
-        margin-top: var(--spacing-sm);
+    
+    .container, 
+    main.container {
+        width: 100%;
+        max-width: 800px;
+        padding: 0 var(--spacing-md);
+        margin: 0 auto;
     }
 }
 
@@ -446,7 +494,9 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-lg) auto;
+    max-width: 800px;
+    width: 100%;
 }
 
 .example-images figure {
@@ -483,27 +533,32 @@ footer {
     color: var(--text-primary);
     margin-top: var(--spacing-xl);
     margin-bottom: var(--spacing-md);
+    text-align: left;
 }
 
 .model-description {
     background-color: var(--background-alt);
     padding: var(--spacing-md);
     border-radius: 8px;
-    margin: var(--spacing-md) 0 var(--spacing-xl) 0;
+    margin: var(--spacing-md) auto var(--spacing-xl) auto;
     font-size: 1.1rem;
     line-height: 1.7;
     font-family: var(--font-body);
+    max-width: 800px;
 }
 
 .key-insights {
     background-color: var(--background-alt);
     padding: var(--spacing-lg);
     border-radius: 8px;
-    margin-top: var(--spacing-xl);
+    margin: var(--spacing-xl) auto;
+    max-width: 800px;
+    width: 100%;
 }
 
 .key-insights h4 {
     margin-top: 0;
+    text-align: left;
 }
 
 .key-insights ul {
@@ -539,35 +594,24 @@ footer {
     }
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .container {
-        margin-left: 0;
-    }
-
-    .hero {
-        margin-left: 0;
-    }
-
-    .table-of-contents {
-        display: none; /* Hide on mobile */
-    }
-}
-
 /* Observation Notes */
 .observation-notes {
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-lg) auto;
+    max-width: 800px;
+    width: 100%;
 }
 
 .observation-table {
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-lg) auto;
     overflow-x: auto;
+    max-width: 800px;
+    width: 100%;
 }
 
 .observation-table table {
     width: 100%;
     border-collapse: collapse;
-    margin: var(--spacing-md) 0;
+    margin: var(--spacing-md) auto;
     font-size: 1rem;
     font-family: var(--font-body);
     line-height: 1.6;
@@ -592,7 +636,9 @@ footer {
 
 /* Platform Details Accordion */
 .accordion-container {
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-lg) auto;
+    max-width: 800px;
+    width: 100%;
 }
 
 .platform-details {
@@ -643,10 +689,11 @@ footer {
 
 /* State description list */
 .state-description {
-    margin: var(--spacing-md) 0;
+    margin: var(--spacing-md) auto;
     padding: var(--spacing-md);
     background-color: var(--background-alt);
     border-radius: 8px;
+    max-width: 800px;
 }
 
 .state-description dt {
@@ -706,4 +753,79 @@ footer {
     font-size: 1.1rem;
     font-style: italic;
     color: var(--text-secondary);
+}
+
+/* Section specific styles */
+.state-analysis h4,
+.key-insights h4 {
+    text-align: left;
+}
+
+/* Make sure all tables, observations and diagrams are properly centered */
+.observation-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-md) auto;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+/* Content Sections */
+main.container section {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    body {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+        letter-spacing: -0.04em;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        letter-spacing: -0.03em;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
+    }
+
+    p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+    }
+
+    .container, 
+    main.container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .state-diagrams {
+        gap: var(--spacing-lg);
+    }
+
+    .state-diagrams figcaption {
+        font-size: 1.125rem;
+        margin-top: var(--spacing-sm);
+    }
+
+    body:not(.index-page) .table-of-contents ~ main.container {
+        width: 100%;
+        transform: none;
+        padding: 0 var(--spacing-md);
+    }
+    
+    body:not(.index-page) .hero .container {
+        transform: none;
+    }
 } 

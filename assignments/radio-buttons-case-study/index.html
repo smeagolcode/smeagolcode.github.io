@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redesigning Radio Buttons for Accessibility | Case Study</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script>
+        // Ensure the page starts at the top when loaded
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        }
+        
+        // Also reset scroll position when page is refreshed
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        }
+    </script>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <a href="../../" class="back-link" style="display: inline-block; margin-bottom: 15px; color: var(--primary-color); text-decoration: none;">← Back to Home</a>
+            <h1>Redesigning Radio Buttons for Accessibility! 🎯</h1>
+            <p class="subtitle">Improving YouTube's video quality selector for all users</p>
+        </div>
+    </header>
+
+    <nav class="table-of-contents">
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#problem">The Problem</a>
+                <ul>
+                    <li><a href="#inputs">Inputs</a></li>
+                    <li><a href="#outputs">Outputs</a></li>
+                </ul>
+            </li>
+            <li><a href="#research">Redesign Thoughts</a>
+                <ul>
+                    <li><a href="#state-models">State Models</a></li>
+                    <li><a href="#figma-redesign">Figma Redesign</a></li>
+                </ul>
+            </li>
+            <li><a href="#solution">The Solution</a></li>
+            <li><a href="#reflection">Conclusion</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="introduction" id="introduction">
+            <h2>Introduction</h2>
+            <p><span class="highlight">Radio buttons</span> are common UI components in the digital world, serving the function of assigning binary states to a list of items. While they may seem simple, their implementation can <span class="emphasis">impact user experience</span>, especially for users relying on assistive technologies.</p>
+            
+            <p>Today, we'll examine <span class="highlight">YouTube's video quality selector (radio buttons)</span>, analyzing its accessibility pitfalls and proposing an improved design that better serves all users.</p>
+            
+            <div class="example-images">
+                <figure>
+                    <img src="images/youtube.png" alt="YouTube's video quality selector interface" class="example-image">
+                    <figcaption class="caption">YouTube's video quality selector in action</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/reddit.png" alt="Reddit's post visibility options interface" class="example-image">
+                    <figcaption class="caption">Reddit's post sorting options</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/google_form.png" alt="Google Forms' multiple choice interface" class="example-image">
+                    <figcaption class="caption">Google Forms' multiple choice</figcaption>
+                </figure>
+            </div>
+
+            <div class="component-demo original">
+                <h3>Original YouTube Implementation</h3>
+                <p>This is how YouTube currently implements their video quality selector:</p>
+                <div class="radio-group" role="radiogroup" aria-label="Video Quality - Original">
+                    <!-- Original radio buttons will be inserted here via JavaScript -->
+                </div>
+            </div>
+
+        </section>
+
+        <section class="problem" id="problem">
+            <h2>The Problem</h2>
+            <p>Through using and observing radio button implementations <span class="highlight">across 3 platforms</span>, I identified several issues and patterns in both input handling and output behavior. 
+                I focused on three applications: <span class="highlight">YouTube</span>, <span class="highlight">Reddit</span>, and <span class="highlight">Google Forms</span>.</p>
+
+            <div class="observation-notes">
+                <h3>Inputs</h3>
+                <p>I tested each component to understand their behavior, feedback mechanisms, and accessibility features. (surprising results 👀!) </p>
+                
+                <div class="accordion-container">
+                    <details class="platform-details">
+                        <summary>YouTube Implementation</summary>
+                        <ul>
+                            <li>No hover effects or double-click functionality</li>
+                            <li>Text labels can be selected</li>
+                            <li>Single click selection with no deselection option</li>
+                            <li>Basic keyboard navigation with Enter key support</li>
+                            <li>Standard tap behavior on mobile</li>
+                        </ul>
+                        <figure>
+                            <img src="images/youtube_imp.png" alt="YouTube's video quality selector interface" class="example-image">
+                            <figcaption class="caption">YouTube's video quality selector states</figcaption>
+                        </figure>
+                        <dl class="state-description">
+                            <dt>Default State</dt>
+                            <dd>A simple empty circular outline, showing an available but unselected option</dd>
+                            <dt>Selected State</dt>
+                            <dd>A filled blue circle with a white inner ring, indicating the option is currently active</dd>
+                            <dt>Focus State</dt>
+                            <dd>The bottom example shows the focus/keyboard navigation state, with a gray background highlight. This visual indicator helps keyboard users and screen reader users know which element they're currently focused on. When in this state, users can press Enter to select the option</dd>
+                        </dl>
+                    </details>
+
+                    <details class="platform-details">
+                        <summary>Reddit Implementation</summary>
+                        <ul>
+                            <li>Hover effects with light grey background</li>
+                            <li>Selected state uses darker grey background</li>
+                            <li>Page reloads on selection (provides feedback)</li>
+                            <li>Blue outline box for keyboard focus</li>
+                            <li>Similar to mouse interface on mobile, without hover effects</li>
+                        </ul>
+                        <figure>
+                            <img src="images/reddit_imp.png" alt="Reddit's post sorting options interface" class="example-image" width="500px">
+                            <figcaption class="caption">Reddit's post sorting options</figcaption>
+                        </figure>
+                        <dl class="state-description">
+                            <dt>Default State</dt>
+                            <dd>Options like "New" and "Rising" appear in standard black text against a white background</dd>
+                            <dt>Selected State</dt>
+                            <dd>"Top" is highlighted with a light gray background, indicating an item is selected</dd>
+                            <dt>Focus State</dt>
+                            <dd>"Hot" is surrounded by a blue outline box, indicating the current keyboard focus position for users navigating with Tab or arrow keys. Similarly, when in this state, users can hit Enter to select the option</dd>
+                        </dl>
+                    </details>
+
+                    <details class="platform-details">
+                        <summary>Google Forms Implementation</summary>
+                        <ul>
+                            <li>Hover effect with slight grey background</li>
+                            <li>Subtle checkbox animation (0.5s)</li>
+                            <li>Limited keyboard accessibility</li>
+                            <li>Standard tap behavior on mobile</li>
+                        </ul>
+                        <figure>
+                            <img src="images/google_imp.png" alt="Google Forms' multiple choice interface" class="example-image">
+                            <figcaption class="caption">Google Forms' checkbox implementation</figcaption>
+                        </figure>
+                        <dl class="state-description">
+                            <dt>Default State</dt>
+                            <dd>Represented by empty square boxes, indicating unselected options</dd>
+                            <dt>Selected State</dt>
+                            <dd>Shown with a brown checkmark inside the box, as seen in "Option 3"</dd>
+                            <dt>Focus State</dt>
+                            <dd>Indicated by a light gray background highlight when hovering or focusing on an option</dd>
+                        </dl>
+                    </details>
+                </div>
+
+                <div class="observation-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><em>Input Method</em></th>
+                                <th><strong>YouTube</strong></th>
+                                <th><strong>Reddit</strong></th>
+                                <th><strong>Google Forms</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><em>Mouse/Touchpad</em></td>
+                                <td>- No hover effect<br>- No double-click functionality<br>- Text in label can be selected<br>- Single click to select<br>- Re-clicking selected radio button doesn't deselect (expected behavior for radio buttons)</td>
+                                <td>- Hover effect shows light grey background<br>- Grey background for selected item (slightly darker than hover)<br>- Clicking selected item <span class="highlight">reloads the page</span></td>
+                                <td>- Hover effect shows slight grey background on checkbox (not on label)<br>- Clicking shows <span class="highlight">subtle animation</span><br>- Animation matches mental model of checking a box</td>
+                            </tr>
+                            <tr>
+                                <td><em>Keyboard</em></td>
+                                <td>- Press "Enter" to select unselected items<br>- "Enter" on selected item gives no feedback and doesn't deselect<br>- <span class="highlight">No way to deselect</span></td>
+                                <td>- Blue outline box indicates keyboard focus<br>- Press "Enter" to select an unselected item</td>
+                                <td>- <span class="highlight">Cannot use keyboard</span><br>- Can only navigate between options using Tab key<br>- Limited accessibility</td>
+                            </tr>
+                            <tr>
+                                <td><em>Touch (Mobile)</em></td>
+                                <td>- Standard tap to select<br>- Tapping again gives no feedback and doesn't deselect</td>
+                                <td>- Similar to mouse interface<br>- No hover effect<br>- Tap to select</td>
+                                <td>- Similar to mouse interface<br>- No hover effect<br>- Standard tap behavior</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="key-findings">In my testing, I found some interesting differences. Reddit's page reload gives clear feedback but breaks the flow. I liked Google Forms' smooth animation, but was surprised that it doesn't work with keyboard at all. YouTube keeps things simple but misses basic features like hover states.</p>
+
+                <h3>Outputs</h3>
+                <p>Then, I tested each with VoiceOver, the built-in screen reader on macOS.</p>
+
+                <div class="observation-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><em>Output Aspect</em></th>
+                                <th><strong>YouTube</strong></th>
+                                <th><strong>Reddit</strong></th>
+                                <th><strong>Google Forms</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><em>Component Recognition</em></td>
+                                <td>Correctly identifies as "radio button selection component"</td>
+                                <td>Incorrectly identifies options as <span class="highlight">"links"</span></td>
+                                <td>Correctly identifies as "checkbox component"</td>
+                            </tr>
+                            <tr>
+                                <td><em>Navigation Method</em></td>
+                                <td>Tab/Shift-Tab to move between options</td>
+                                <td><span class="highlight">Cannot use Tab</span>; requires arrow keys (up/down) to navigate between options</td>
+                                <td>Tab/Shift-Tab to move between options</td>
+                            </tr>
+                            <tr>
+                                <td><em>Information Sequence</em></td>
+                                <td>1. Component type<br>2. Current label<br>3. Selection state<br>4. Action key (caps-space)</td>
+                                <td>1. Identifies as "link"<br>2. Instructs to "press key to open"</td>
+                                <td>1. Component type<br>2. Current label<br>3. Selection state<br>4. Action key</td>
+                            </tr>
+                            <tr>
+                                <td><em>Selection Feedback</em></td>
+                                <td>Announces "[label-name] selected"</td>
+                                <td><span class="highlight">No feedback</span> for selection state change</td>
+                                <td>Announces "checked" or "unchecked"</td>
+                            </tr>
+                            <tr>
+                                <td><em>Navigation Consistency</em></td>
+                                <td>Consistent with web standards</td>
+                                <td>Inconsistent with typical radio button navigation</td>
+                                <td>Consistent with web standards</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="key-findings">My screen reader test showed big problems with Reddit's design. It thinks radio buttons are links and doesn't tell users when they select something. YouTube and Google Forms did better, but could still improve their audio feedback.</p>
+            </div>
+        </section>
+
+        <section class="research" id="research">
+            <h2>Redesign Thoughts</h2>
+            
+            <div class="state-models" id="state-models">
+                <h3>State Models</h3>
+                <p>To understand how users interact with radio buttons, I created state models for both mouse and keyboard users. This helped identify gaps in current implementations and guided the design process.</p>
+
+
+                <h4>Original Implementation</h4>
+                <div class="state-diagrams">
+                    <figure>
+                        <img src="images/youtube_mouse_model.png" alt="Original YouTube mouse interaction model">
+                        <figcaption>Original Mouse Interaction Model</figcaption>
+                    </figure>
+                    <p class="model-description">The original mouse interaction model is relatively straightforward, with only two main states: <span class="highlight">Default</span> and <span class="highlight">Selected</span>.</p>
+                    
+                    <figure>
+                        <img src="images/youtube_keyboard_model.png" alt="Original YouTube keyboard interaction model">
+                        <figcaption>Original Keyboard Interaction Model</figcaption>
+                    </figure>
+                    <p class="model-description">The keyboard interaction model is more complex, introducing a <span class="highlight">Focus state</span> (indicated by a gray background). When a user tabs to a radio button, it enters a focused state. Pressing Space or Enter creates a combined <span class="emphasis">"Focused & Selected"</span> state with both visual indicators.</p>
+                </div>
+
+                <h4>Revised Implementation</h4>
+                <div class="state-diagrams">
+                    <figure>
+                        <img src="images/revised_youtube_mouse_model.png" alt="Revised YouTube mouse interaction model">
+                        <figcaption>Revised Mouse Interaction Model</figcaption>
+                    </figure>
+                    <p class="model-description">In the revised mouse model, I added a <span class="highlight">Hover state</span> that was missing from YouTube's implementation. This hover state provides immediate visual feedback when users move their cursor over an option, using a subtle background highlight to indicate interactivity. Additionally, I introduced a combined <span class="emphasis">"Selected & Hover"</span> state to maintain consistent feedback when hovering over a selected item.</p>
+
+                    <figure>
+                        <img src="images/revised_youtube_keyboard_model.png" alt="Revised YouTube keyboard interaction model">
+                        <figcaption>Revised Keyboard Interaction Model</figcaption>
+                    </figure>
+                    <p class="model-description">The revised keyboard model maintains the necessary complexity while improving visual clarity. Focus states are now more prominent with a distinct outline, making it easier for keyboard users to <span class="highlight">track their position</span>.</p>
+                </div>
+            </div>
+            <p>Of course, there are tradeoffs to this redesign. </p>
+
+            <div class="key-insights" style="margin-bottom: 20px;">
+                <h4>Design Tradeoffs 🤔</h4>
+                <ul>
+                    <li><span class="highlight">Visual Feedback vs. Simplicity</span>: Adding hover states improves discoverability but increases complexity</li>
+                    <li><span class="highlight">Keyboard Navigation</span>: Enhanced focus indicators make the interface more accessible but require additional visual elements</li>
+                    <li><span class="highlight">Audio Feedback</span>: Sound effects provide better feedback but may not be suitable for all environments</li>
+                </ul>
+            </div>
+
+            <div class="figma-redesign" id="figma-redesign">
+                <h3>Figma Redesign</h3>
+
+                <div class="key-insights">
+                    <h4>Key Improvements</h4>
+                    <ul>
+                        <li>Added <span class="highlight">hover states</span> for better interaction feedback</li>
+                        <li>Included <span class="highlight">audio confirmation</span> when selecting options</li>
+                        <li>Improved <span class="highlight">keyboard navigation</span> with clear focus indicators</li>
+                    </ul>
+                </div>
+
+                <div class="state-diagrams figma-images">
+                    <figure>
+                        <img src="images/figma_1.png" alt="Figma mockup showing initial and hover states" style="max-width: 600px;">
+                        <figcaption>Initial and Hover States</figcaption>
+                    </figure>
+                    
+                    <figure>
+                        <img src="images/figma_2.png" alt="Figma mockup showing voice feedback states" style="max-width: 600px;">
+                        <figcaption>Voice Feedback Implementation</figcaption>
+                    </figure>
+                </div>
+
+                <p>These changes address what <span class="highlight">Kat Holmes</span> talked about as a "mismatch" - the gap between a person's abilities and environmental demands. 
+                    My redesign reduces mismatches by providing different feedback channels for both visual and screen-redear users. 
+                    When radio buttons only provide visual feedback (contrasting color), they create a mismatch for visually impaired users; 
+                    conversely, when they only use audio to indicate state, they create mismatches for users with color blindness. 
+
+                <p>These revisions represent a careful balance between <span class="emphasis">functionality and simplicity</span>. 
+                    For mouse users, the hover states make the component more intuitive by following common UI patterns. 
+                    For keyboard users, the audible feedback improves accessibility without changing the familiar tab navigation.</p>
+            </div>
+        </section>
+
+        <section class="solution" id="solution">
+            <h2>The Solution</h2>
+            <p>Let's check out the redesigned radio buttons! 🥳</p>
+            <div class="component-demo redesigned">
+                <h3>Redesigned Implementation</h3>
+                <p>And here's our improved version with hover effects and audio confirmation:</p>
+                <div class="radio-group" role="radiogroup" aria-label="Video Quality">
+                    <!-- Redesigned radio buttons will be inserted here via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="reflection" id="reflection">
+            <h2>Conclusion</h2>
+            <p>Through this redesign, I learned that small changes can make a big difference. 
+             By adding hover states and audio cues, I made radio buttons work better for everyone. 
+             Simple tweaks can create a more inclusive experience without making everything more complicated. 
+             Hope you enjoyed this story! 🎉</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>This was created by <a href="https://lebretou.github.io/">Zhongzheng Xu</a> for the course <a href="https://cs.brown.edu/courses/csci1300/">CSCI 1300</a> at Brown University</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html> 
