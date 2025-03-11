@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🙆🏻‍♂️ Personas and Storyboarding | CS1300 Portfolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <!-- Add Font Awesome for navigation icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to this page */
+        .interface-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .full-width-figure {
+            width: 100%;
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .full-width-figure img {
+            width: 100%;
+            max-height: 800px;
+            object-fit: contain;
+        }
+        
+        .full-width-figure figcaption {
+            text-align: center;
+            margin-top: var(--spacing-sm);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .interviewee-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-primary);
+        }
+        
+        .interviewee-header h4 {
+            margin: 0;
+            color: var(--text-primary);
+        }
+        
+        .interface-step {
+            background-color: var(--background-card);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+        
+        .interface-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .quote-bubble {
+            background-color: var(--background-accent);
+            border-radius: 20px;
+            padding: var(--spacing-md);
+            position: relative;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .quote-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: var(--background-accent) transparent;
+        }
+        
+        .interview-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .interviewee {
+            background-color: var(--background-card);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .empathy-map {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .map-section {
+            background-color: var(--background-card);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            border-left: 4px solid;
+            transition: transform 0.2s ease;
+        }
+        
+        .map-section:hover {
+            transform: translateY(-3px);
+        }
+        
+        .map-section h4 {
+            color: var(--accent-primary);
+            text-align: left;
+        }
+        
+        .thinks-section {
+            border-color: #a8d0e6; /* Soft blue */
+        }
+        
+        .feels-section {
+            border-color: #f8a5c2; /* Soft pink */
+        }
+        
+        .says-section {
+            border-color: #b8e0d2; /* Soft green */
+        }
+        
+        .does-section {
+            border-color: #f9c784; /* Soft orange/yellow */
+        }
+        
+        .slideshow {
+            position: relative;
+            margin: var(--spacing-lg) 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .slide {
+            display: none;
+            padding: var(--spacing-md);
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .storyboard-image {
+            width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .slideshow-nav {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 120%;
+            left: -10%;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            padding: 0 var(--spacing-md);
+            z-index: 10;
+        }
+        
+        .slideshow-nav button {
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+            opacity: 0.8;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slideshow-nav button:hover {
+            background-color: #222;
+            transform: scale(1.1);
+            opacity: 1;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: var(--spacing-sm);
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--background-card);
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        
+        .indicator:hover {
+            transform: scale(1.2);
+        }
+        
+        .indicator.active {
+            background-color: var(--accent-primary);
+            width: 15px;
+            height: 15px;
+        }
+        
+        .storyboard-caption {
+            margin-top: var(--spacing-md);
+            font-style: italic;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Screen reader only class */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        h2 {
+            text-align: left;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <a href="../../" class="back-link" style="display: inline-block; margin-bottom: 15px; color: var(--primary-color); text-decoration: none;">← Back to Home</a>
+            <h1>🙆🏻‍♂️ Personas and Storyboarding</h1>
+            <p class="subtitle">Exploring the User Experience of Ten One Tea House's Tablet Ordering System</p>
+        </div>
+    </header>
+
+    <nav class="table-of-contents">
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#interface">The Interface</a></li>
+            <li><a href="#observations">Observations & Interviews</a></li>
+            <li><a href="#personas">Personas</a></li>
+            <li><a href="#storyboards">Storyboards</a></li>
+            <li><a href="#conclusion">Insights & Takeaways</a></li>
+        </ul>
+    </nav>
+
+    <main style="margin-top: 0px;" class="container">
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+                Today we will explore the <span class="highlight">tablet ordering system</span> at Ten One Tea House, a local boba shop near my school. 
+                This project discusses how customers interact with digital ordering interfaces in food service scenarios.
+            </p>
+            
+            <div class="example-images">
+                <figure>
+                    <div class="image-placeholder">
+                        <img src="images/shop-exterior.jpg" alt="Shop Exterior Image" style="max-width: 100%; border-radius: var(--border-radius);">
+                    </div>
+                    <figcaption class="caption">Ten One Tea House storefront</figcaption>
+                </figure>
+                <figure>
+                    <div class="image-placeholder">
+                        <img src="images/order.jpg" alt="Customer Using Tablet Image" style="max-width: 100%; border-radius: var(--border-radius);">
+                    </div>
+                    <figcaption class="caption">Ordering counter with tablet system</figcaption>
+                </figure>
+                <figure>
+                    <div class="image-placeholder">
+                        <img src="images/customer.jpeg" alt="Customer Using Tablet Image" style="max-width: 100%; border-radius: var(--border-radius);">
+                    </div>
+                    <figcaption class="caption">Customer interacting with the tablet interface</figcaption>
+                </figure>
+            </div>
+            
+            <p>
+                Through <span class="highlight">observation and interviews</span>, I created personas and storyboards that capture some interesting patterns of the user experience. 
+                Join me as I uncover insights about user habits, pain points, and opportunities for improvement in this common restaurant technology 🎉! 
+            </p>
+        </section>
+
+        <section id="interface">
+            <h2>The Interface</h2>
+            <p>
+                The Ten One Tea House ordering system consists of <span class="highlight">a tablet mounted on a stand positioned near the counter</span>, creating an interactive as well as ergonomic self-service experience for customers. 
+                The <span class="highlight">software</span> allows people to browse, customize, and place their orders without having to talking to people or waiting in line, streamlining the ordering process during busy hours.
+            </p>
+            
+            <figure class="full-width-figure">
+                <img src="images/annotated.jpeg" alt="Annotated Interface Flow" style="max-width: 100%; display: block; margin: var(--spacing-lg) auto; box-shadow: var(--shadow-md); border-radius: var(--border-radius);">
+                <figcaption class="caption">Annotation sketch of the Ten One Tea House ordering interface showing user flow.</figcaption>
+            </figure>
+            
+            <details class="platform-details">
+                <summary>Interface Flow: From Welcome to Checkout</summary>
+                <div>
+                    <p>The interface follows a logical four-step flow designed to guide users from login to checkout:</p>
+                    
+                    <div class="interface-steps">
+                        <div class="interface-step">
+                            <h4>Step 1: Welcome Screen</h4>
+                            <div class="image-placeholder">
+                                <img src="images/welcome.jpeg" alt="Welcome Screen" style="max-width: 100%; border-radius: var(--border-radius);">
+                            </div>
+                            <p>When approaching the tablet, customers first encounter a welcome screen divided into two sections: a rewards panel displaying current promotions through an eye-catching slideshow, and a phone number entry pad. This initial screen serves dual purposes - entering your number enrolls you in their reward program while also providing a way to receive order notifications.</p>
+                        </div>
+                        
+                        <div class="interface-step">
+                            <h4>Step 2: Menu Selection</h4>
+                            <div class="image-placeholder">
+                                <img src="images/menu.jpeg" alt="Menu Screen" style="max-width: 100%; border-radius: var(--border-radius);">
+                            </div>
+                            <p>The menu page thoughtfully splits into a sidebar categorizing drink types on the left (milk teas, fruit teas, etc.) and the main content area on the right displaying the actual drink options. This categorical organization helps users quickly find what they're looking for without endless scrolling.</p>
+                        </div>
+                        
+                        <div class="interface-step">
+                            <h4>Step 3: Customization</h4>
+                            <div class="image-placeholder">
+                                <img src="images/customization.jpeg" alt="Customization Screen" style="max-width: 100%; border-radius: var(--border-radius);">
+                            </div>
+                            <p>The drink customization page presents a visually appealing image of the chosen drink on the left side while offering customization options on the right. Here, customers can personalize their experience by adjusting quantity, size, milk type, and ice level with simple taps.</p>
+                        </div>
+                        
+                        <div class="interface-step">
+                            <h4>Step 4: Checkout</h4>
+                            <div class="image-placeholder">
+                                <img src="images/checkout.jpeg" alt="Checkout Screen" style="max-width: 100%; border-radius: var(--border-radius);">
+                            </div>
+                            <p>The checkout page displays a complete summary of the order with line items, prices, and a total. Users can make last-minute adjustments before finalizing their purchase with the prominently displayed "Check Out" button. After payment, customers receive an order number for pickup.</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+            
+            <p class="emphasis">
+                I think what makes this interface particularly effective is how it mirrors the conversational flow you'd have with a staff- starting with identification, moving to selection, then customization, and finally confirmation.
+            </p>
+        </section>
+
+        <section id="observations">
+            <h2>Observations & Interviews</h2>
+            <p>
+                To better understand how users interact with the tablet ordering system, I observed some customers and <span class="highlight">interviewed three people at Ten One Tea House</span>.
+            </p>
+
+            <div class="observation-notes">
+                <h3>My Key Observations</h3>
+                <div class="observation-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Observed Behavior</th>
+                                <th>Potential Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>People like <span class="highlight">skip phone number entry</span></td>
+                                <td>Privacy concerns</td>
+                            </tr>
+                            <tr>
+                                <td>Some people have difficulty <span class="highlight">navigating back</span></td>
+                                <td>Navigation controls not intuitive</td>
+                            </tr>
+                            <tr>
+                                <td>Confusion with <span class="highlight">topping selection</span></td>
+                                <td>Add-on organization could be improved</td>
+                            </tr>
+                            <tr>
+                                <td>Sometimes people <span class="highlight">miss order notifications</span></td>
+                                <td>Order status communication needs improvement</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <h3>Interviews</h3>
+            <div class="accordion-container">
+                <details class="platform-details">
+                    <summary>Interview Questions</summary>
+                    <div>
+                        <ol>
+                            <li>How <span class="highlight">often</span> do you visit Ten One Tea House, and have you used their tablet ordering system before?</li>
+                            <li>Walk me through your <span class="highlight">typical ordering process</span> at Ten One Tea House. What are the steps you usually take?</li>
+                            <li>What aspects of the tablet ordering system do you find most helpful or convenient?</li>
+                            <li>Have you experienced any challenges or frustrations while using the tablet to place your order?</li>
+                            <li>How do you feel about <span class="highlight">entering your phone number</span> at the beginning of the ordering process?</li>
+                            <li>When customizing your drink, how easy or difficult is it to find and select the options you want?</li>
+                            <li>If you could change or improve one thing about the tablet ordering system, what would it be and why?</li>
+                        </ol>
+                    </div>
+                </details>
+            </div>
+            <div class="interview-summary">
+                <div class="interviewee">
+                    <div class="interviewee-header">
+                        <img src="images/alex.png" alt="Alex Avatar" class="avatar">
+                        <h4>Alex, 19, Sophomore</h4>
+                    </div>
+                    <div class="quote-bubble">
+                        "I prefer the tablet because it's <span class="highlight">faster</span> than talking to someone. I don't have to talk to people - I'm already talking to people all day."
+                    </div>
+                    <ul>
+                        <li><strong>Frequency:</strong> Twice a week between classes</li>
+                        <li><strong>Highlight:</strong> Values speed and independence</li>
+                        <li><strong>Pain point:</strong> Cannot easily remove individual items when making a mistake</li>
+                        <li><strong>Suggestion:</strong> Add a functional back button</li>
+                    </ul>
+                </div>
+                
+                <div class="interviewee">
+                    <div class="interviewee-header">
+                        <img src="images/maya.png" alt="Maya Avatar" class="avatar">
+                        <h4>Maya, 21, Junior</h4>
+                    </div>
+                    <div class="quote-bubble">
+                        "I wish it would <span class="highlight">remember my past orders</span> so I didn't have to go through all the customization steps every single time for my usual drink."
+                    </div>
+                    <ul>
+                        <li><strong>Frequency:</strong> Once a week</li>
+                        <li><strong>Highlight:</strong> Appreciates seeing pictures of drinks</li>
+                        <li><strong>Pain point:</strong> Poor organization of topping options</li>
+                        <li><strong>Suggestion:</strong> Save favorites or recent orders</li>
+                    </ul>
+                </div>
+                
+                <div class="interviewee">
+                    <div class="interviewee-header">
+                        <img src="images/jayden.png" alt="Jayden Avatar" class="avatar">
+                        <h4>Jayden, 20, Sophomore</h4>
+                    </div>
+                    <div class="quote-bubble">
+                        "<span class="highlight">No miscommunications</span> like when I try to order verbally. What I select is what I get, so that's cool."
+                    </div>
+                    <ul>
+                        <li><strong>Frequency:</strong> Every other day</li>
+                        <li><strong>Highlight:</strong> Values accuracy of digital ordering</li>
+                        <li><strong>Pain point:</strong> Order status notifications are unreliable</li>
+                        <li><strong>Suggestion:</strong> Add a display showing order queue status</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="personas">
+            <h2>Personas</h2>
+            <p>
+                Based on my observations and interviews, I created two personas that represent the primary user types for the Ten One Tea House tablet ordering system.
+            </p>
+
+            <div class="persona">
+                <h3>Persona 1: Jordan - The Overachiever</h3>
+                <div class="example-images">
+                    <figure>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img src="images/persona1.png" style="width: 300px; height: 300px; border-radius: var(--border-radius);" alt="Jordan Avatar" class="avatar">
+                        </div>
+                        <figcaption class="caption">Jordan: The busy student who values speed </figcaption>
+                    </figure>
+                </div>
+
+                <div class="model-description">
+                    <p>
+                        Jordan is a 20-year-old junior who frequently visits Ten One Tea House between classes. 
+                        They prioritize efficiency in their ordering experience, preferring technology that minimizes social interaction and maximizes speed. 
+                        Jordan struggles with unclear navigation elements and gets frustrated when technical glitches force them to seek staff assistance.
+                    </p>
+
+                    <div class="empathy-map">
+                        <div class="map-section thinks-section">
+                            <h4>THINKS</h4>
+                            <ul>
+                                <li>"I don't have time to wait in line or chat with cashiers."</li>
+                                <li>"Why can't I just quickly fix my mistake without starting over?"</li>
+                                <li>"I wish the system remembered what I usually order."</li>
+                                <li>"This is probably faster than explaining my order to a person."</li>
+                                <li>"I hope I don't mess up my customizations."</li>
+                            </ul>
+                        </div>
+
+                        <div class="map-section feels-section">
+                            <h4>FEELS</h4>
+                            <ul>
+                                <li>Impatient when the tablet responds slowly</li>
+                                <li>Annoyed when forced to interact with staff due to system issues</li>
+                                <li>Satisfied when completing an order quickly and independently</li>
+                                <li>Anxious about time when between classes</li>
+                                <li>Relieved to avoid social interaction when tired</li>
+                                <li>Frustrated when navigation isn't intuitive</li>
+                            </ul>
+                        </div>
+
+                        <div class="map-section says-section">
+                            <h4>SAYS</h4>
+                            <ul>
+                                <li>"I prefer the tablet because it's faster than talking to someone."</li>
+                                <li>"I never enter my phone number - I don't want more spam texts."</li>
+                                <li>"The back button doesn't work right; it's super annoying."</li>
+                                <li>"I like being able to see all my options at once."</li>
+                                <li>"I wish I could just edit one item instead of starting over."</li>
+                            </ul>
+                        </div>
+
+                        <div class="map-section does-section">
+                            <h4>DOES</h4>
+                            <ul>
+                                <li>Skips the phone number entry step</li>
+                                <li>Orders quickly with minimal customization when in a hurry</li>
+                                <li>Gets frustrated and may abandon order if the system freezes</li>
+                                <li>Avoids asking staff for help unless absolutely necessary</li>
+                                <li>Checks order carefully before finalizing to avoid mistakes</li>
+                                <li>Uses the tablet even when counter service is available</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 0;" class="key-insights">
+                        <h4>Interface Problems</h4>
+                        <ul>
+                            <li>Cannot easily correct mistakes or remove items</li>
+                            <li>Lacks intuitive navigation like back buttons</li>
+                            <li>No quick reorder functionality for regular customers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="persona">
+                <h3>Persona 2: Riley - The Regular</h3>
+                <div class="example-images">
+                    <figure>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img src="images/persona2.png" style="width: 300px; height: 300px; border-radius: var(--border-radius);" alt="Riley Avatar" class="avatar">
+                        </div>
+                        <figcaption class="caption">Riley: The loyal customer who values personalization and rewards</figcaption>
+                    </figure>
+                </div>
+
+                <div class="model-description">
+                    <p>
+                        Riley is a 21-year-old senior who visits Ten One Tea House as part of their weekly routine. 
+                        They appreciate the ability to customize drinks and participate in the rewards program, but often wishes for better organization of options and improved order status communication. 
+                        Riley balances their desire for efficiency with their interest in exploring new menu items.
+                    </p>
+
+                    <div class="empathy-map">
+                        <div class="map-section thinks-section">
+                            <h4>THINKS</h4>
+                            <ul>
+                                <li>"I wonder if there are any new seasonal drinks today."</li>
+                                <li>"Which combination of toppings would taste best with this?"</li>
+                                <li>"I wish I could see where my order is in the queue."</li>
+                                <li>"I hope I have enough points for a free drink soon."</li>
+                                <li>"There must be a better way to organize these options."</li>
+                            </ul>
+                        </div>
+
+                        <div class="map-section feels-section">
+                            <h4>FEELS</h4>
+                            <ul>
+                                <li>Curious about new menu items and combinations</li>
+                                <li>Proud of accumulating reward points</li>
+                                <li>Confused by seemingly random organization of add-on options</li>
+                                <li>Hopeful when trying new customizations</li>
+                                <li>Disappointed when order status notifications are inaccurate</li>
+                                <li>Appreciated when recognized as a regular customer</li>
+                            </ul>
+                        </div>
+
+                        <div class="map-section says-section">
+                            <h4>SAYS</h4>
+                            <ul>
+                                <li>"I put in my phone number for the rewards points."</li>
+                                <li>"I wish it would remember my usual order."</li>
+                                <li>"The text notification is helpful, but often my drink isn't actually ready."</li>
+                                <li>"I like seeing pictures of drinks I haven't tried before."</li>
+                                <li>"The topping selections could be organized better."</li>
+                            </ul>
+                        </div>
+
+                        <div class="map-section does-section">
+                            <h4>DOES</h4>
+                            <ul>
+                                <li>Regularly enters phone number for rewards and notifications</li>
+                                <li>Spends time browsing seasonal specials before deciding</li>
+                                <li>Customizes drinks with multiple modifications</li>
+                                <li>Uses order notifications but verifies before approaching counter</li>
+                                <li>Tries new menu items occasionally</li>
+                                <li>Tolerates minor interface issues for the sake of personalization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 0;" class="key-insights">
+                        <h4>Interface Problems</h4>
+                        <ul>
+                            <li>Lack of saved favorites or order history</li>
+                            <li>Poor organization of customization options</li>
+                            <li>Unreliable order status communication</li>
+                            <li>No clear way to add multiple toppings intuitively</li>
+                            <li>Frequent marketing texts create notification fatigue</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="storyboards">
+            <h2>Storyboards</h2>
+            <p>
+                Using Jordan's persona, I created a storyboard that illustrates a his typical journey for the Ten One Tea House tablet ordering system 🙊.
+            </p>
+
+            <div class="slideshow">
+                <div class="slide active">
+                    <h3>Frame 1: Approaching the Counter</h3>
+                    <img src="images/story-1.png" alt="Jordan approaching the counter" class="storyboard-image">
+                    <p class="storyboard-caption">Jordan rushes into Ten One Tea House between classes, noticing the line at the counter. 
+                        With a relieved expression, he spots an available tablet ordering kiosk and head straight for it, jumping the queue.</p>
+                </div>
+                
+                <div class="slide">
+                    <h3>Frame 2: Navigating the Menu</h3>
+                    <img src="images/story-2.png" alt="Jordan navigating the menu" class="storyboard-image">
+                    <p class="storyboard-caption">Jordan skips the phone number entry and quickly navigates to the "Fruit Tea" category. 
+                        He scans through options with focused efficiency, tapping on his usual passion fruit tea. 
+                       </p>
+                </div>
+                
+                <div class="slide">
+                    <h3>Frame 3: Customization Challenge</h3>
+                    <img src="images/story-3.png" alt="Jordan facing customization challenges" class="storyboard-image">
+                    <p class="storyboard-caption">While customizing his drink, Jordan accidentally selects the wrong ice level. 
+                        He tries tapping the back button repeatedly but it doesn't respond. 
+                        His expression shows clear frustration as he thinks: "Why won't this work? Now I have to start over!"</p>
+                </div>
+                
+                <div class="slide">
+                    <h3>Frame 4: Starting Over</h3>
+                    <img src="images/story-4.png" alt="Jordan starting over" class="storyboard-image">
+                    <p class="storyboard-caption">With an anxious glance at the time, Jordan goes back to the main menu and carefully reselects his drink. 
+                        This time he methodically chooses "Less Ice" and adds lychee jelly, concentrating intensely to avoid making another mistake.</p>
+                </div>
+                
+                <div class="slide">
+                    <h3>Frame 5: Checkout and Payment</h3>
+                    <img src="images/story-5.png" alt="Jordan at checkout" class="storyboard-image">
+                    <p class="storyboard-caption">Jordan reviews his order at checkout, quickly confirms everything is correct, and taps his credit card on the payment terminal. 
+                        The screen displays "Order #42" with a confirmation message.</p>
+                </div>
+                
+                <div class="slide">
+                    <h3>Frame 6: Missing His Order</h3>
+                    <img src="images/story-6.png" alt="Jordan missing his order" class="storyboard-image">
+                    <p class="storyboard-caption">In the busy shop, Jordan waits while checking emails on his phone. He doesn't hear when his number is called. 
+                        After realizing several minutes have passed, he approaches the counter looking concerned and discovers his drink has been sitting there.</p>
+                </div>
+                
+                <div class="slide">
+                    <h3>Frame 7: Departure Thoughts</h3>
+                    <img src="images/story-7.png" alt="Jordan leaving with his drink" class="storyboard-image">
+                    <p class="storyboard-caption">As Jordan rushes out with his drink, a thought bubble reveals: "The ordering was quick, but I wish there was a better way to know when my drink was ready. Still got my perfect tea though - might make it to class on time!"</p>
+                </div>
+                
+                <div class="slide-indicator">
+                    <span class="indicator active" data-slide="0" aria-label="Slide 1"></span>
+                    <span class="indicator" data-slide="1" aria-label="Slide 2"></span>
+                    <span class="indicator" data-slide="2" aria-label="Slide 3"></span>
+                    <span class="indicator" data-slide="3" aria-label="Slide 4"></span>
+                    <span class="indicator" data-slide="4" aria-label="Slide 5"></span>
+                    <span class="indicator" data-slide="5" aria-label="Slide 6"></span>
+                    <span class="indicator" data-slide="6" aria-label="Slide 7"></span>
+                </div>
+                
+                <div class="slideshow-nav">
+                    <button id="prev-button" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-button" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion">
+            <h2>Insights & Takeaways</h2>
+            <p>
+                My research into Ten One Tea House's tablet ordering system revealed several key insights about the user experience. 
+                While people value the independence and efficiency of self-service ordering, they <span class="highlight">face challenges with navigation issues like back buttons that force order restarts</span>. 
+                The <span class="highlight">unreliable notification system</span> for completed orders creates confusion, and <span class="highlight">poorly organized customization options</span> frustrate regular customers who would benefit from saved favorites function. 
+                Despite these pain points, customers <span class="highlight">generally prefer the tablet interface</span> for its speed and reduced social interaction 🥳. 
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>CS1300: User Interfaces and User Experience - Brown University</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simplified slideshow functionality - buttons only
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+            const indicators = document.querySelectorAll('.indicator');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            function showSlide(index) {
+                // Ensure the index is within bounds
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                
+                // Hide all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                
+                // Show the selected slide
+                slides[index].classList.add('active');
+                indicators[index].classList.add('active');
+                currentSlide = index;
+            }
+            
+            // Event listeners for buttons
+            prevButton.addEventListener('click', function() {
+                showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+            });
+            
+            nextButton.addEventListener('click', function() {
+                showSlide((currentSlide + 1) % totalSlides);
+            });
+            
+            // Add click events to indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    showSlide(index);
+                });
+            });
+            
+            // Initialize
+            showSlide(0);
+        });
+    </script>
+</body>
+</html> 

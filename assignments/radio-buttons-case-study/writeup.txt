@@ -1,0 +1,157 @@
+Interface Description: Ten One Tea House Tablet Ordering System
+Introduction
+Welcome to my UX research journey exploring the tablet ordering system at Ten One Tea House, a popular boba shop in my area. This project dives into how real customers interact with digital ordering interfaces in food service environments. Through careful observation, interviews, and analysis, I've created personas and storyboards that capture the essence of the user experience. Join me as I uncover insights about user behavior, pain points, and opportunities for improvement in this increasingly common restaurant technology.
+The Interface
+The Ten One Tea House ordering system consists of a tablet mounted on a stand positioned at the counter, creating an interactive self-service experience for customers. This setup allows patrons to browse, customize, and place their orders without staff assistance, streamlining the ordering process during busy hours.
+The interface follows a logical four-step flow designed to guide users from login to checkout. When approaching the tablet, customers first encounter a welcome screen divided into two sections: a rewards panel displaying current promotions through an eye-catching slideshow, and a phone number entry pad. This initial screen serves dual purposes - entering your number enrolls you in their reward program and text marketing while also providing a way to receive order notifications.
+After entering their information (or skipping this step), customers navigate to the menu page. This screen thoughtfully splits into a sidebar categorizing drink types on the left (milk teas, fruit teas, etc.) and the main content area on the right displaying the actual drink options. This categorical organization helps users quickly find what they're looking for without endless scrolling - a small but important detail for reducing decision fatigue.
+The drink customization page appears after selecting a beverage, presenting a visually appealing image of the chosen drink on the left side while offering customization options on the right. Here, customers can personalize their experience by adjusting quantity, size, milk type, and ice level with simple taps. The visual layout creates a natural connection between the product image and the modifications being made.
+Finally, the checkout page displays a complete summary of the order with line items, prices, and a total. Users can make last-minute adjustments before finalizing their purchase with the prominently displayed "Check Out" button. After payment, customers receive an order number for pickup, completing the digital journey from selection to confirmation.
+What makes this interface particularly effective is how it mirrors the conversational flow you'd have with a barista - starting with identification, moving to selection, then customization, and finally confirmation - all while giving users complete control over their ordering experience.
+Interview Questions
+1.	How often do you visit Ten One Tea House, and have you used their tablet ordering system before?
+o	If yes, how would you compare it to ordering from a person at the counter?
+2.	Walk me through your typical ordering process at Ten One Tea House. What are the steps you usually take?
+3.	What aspects of the tablet ordering system do you find most helpful or convenient?
+4.	Have you experienced any challenges or frustrations while using the tablet to place your order?
+o	If yes, could you describe what happened and how you resolved it?
+5.	How do you feel about entering your phone number at the beginning of the ordering process?
+o	Do you typically enter it or skip this step? Why?
+6.	When customizing your drink, how easy or difficult is it to find and select the options you want?
+7.	If you could change or improve one thing about the tablet ordering system, what would it be and why?
+Simulated Interview Responses
+Interview 1: Alex, 19, Sophomore
+Q1: How often do you visit Ten One Tea House, and have you used their tablet ordering system before?
+"I come here like twice a week, usually between classes. Yeah, I've used the tablet thing pretty much every time. It's way better than waiting in line to order from a person."
+Q2: Walk me through your typical ordering process.
+"So I just walk up, skip the phone number part because I don't want spam texts, browse through the fruit tea section, get my usual passion fruit tea with lychee jelly, adjust the ice to less ice, then checkout. Takes like 30 seconds if I know what I want."
+Q3: What aspects of the tablet ordering system do you find most helpful?
+"Honestly, I just like that I don't have to talk to people. I'm already talking to professors all day, so it's nice to just tap a few buttons and be done. Plus I can take my time looking at all the options without feeling rushed."
+Q4: Have you experienced any challenges while using the tablet?
+"Yeah, sometimes I accidentally add the wrong drink and then I have to start all over because I can't figure out how to remove just one item. Also, one time the screen was super dirty and my touches weren't registering right."
+Q5: How do you feel about entering your phone number?
+"I never do it. They'll just spam me with texts, and I don't need another loyalty program in my life. They call out the order number anyway so I don't see the point."
+Q6: When customizing your drink, how easy is it to find options?
+"It's pretty straightforward. I like that I can see all the options at once. The milk options are kinda confusing though, like what's the difference between 'milk' and 'fresh milk'? That always trips me up."
+Q7: If you could improve one thing, what would it be?
+"Add a back button that actually works! Sometimes I tap the wrong thing and want to go back, but it either doesn't work or I lose everything I've selected. Super annoying."
+Interview 2: Maya, 21, Junior
+Q1: How often do you visit Ten One Tea House, and have you used their tablet ordering system?
+"I'm here at least once a week. The tablet is convenient but sometimes I miss talking to the staff who would recommend stuff."
+Q2: Walk me through your typical ordering process.
+"I usually put in my phone number because I'm trying to get enough points for a free drink. Then I look through the seasonal specials first to see if there's anything new. If not, I go for my usual brown sugar milk tea, extra boba, less ice. Then checkout and wait for my text."
+Q3: What aspects of the tablet ordering system do you find most helpful?
+"It's fast, and I like that I can see everything at once. When it's super busy between classes, I can get my order in quickly and then go sit down instead of standing in line. Also, I appreciate seeing the pictures of drinks I haven't tried before."
+Q4: Have you experienced any challenges?
+"Sometimes the system is just slow to respond, and I'm standing there tapping like an idiot. Also, I wish it remembered my past orders so I didn't have to go through all the customization steps every single time for my usual drink."
+Q5: How do you feel about entering your phone number?
+"I do it for the rewards, but it's kind of annoying how they text me deals like three times a week. The notification for when my drink is ready is useful though, especially when it's crowded and I can't hear them call the number."
+Q6: When customizing your drink, how easy is it to find options?
+"It's okay. I wish they'd organize the toppings better though. Like put all the jellies together, all the boba types together. Right now it feels random and I have to scan the whole list."
+Q7: If you could improve one thing, what would it be?
+"I wish it would save my favorites or recent orders. I get the same thing 90% of the time, so it would save me so much time if I could just tap 'reorder my usual' or something."
+Interview 3: Jayden, 20, Sophomore
+Q1: How often do you visit Ten One Tea House, and have you used their tablet ordering system?
+"I'm here like every other day, man. Their taro milk tea is getting me through this semester. Yeah, I use the tablet every time."
+Q2: Walk me through your typical ordering process.
+"I just walk up, punch in my number real quick, hit the milk tea category, scroll down to taro, max out the sugar because I need the energy, then checkout. Super fast, which is good cause I'm usually running late to something."
+Q3: What aspects of the tablet ordering system do you find most helpful?
+"It's just efficient. No miscommunications like when I try to order verbally and they mishear my customizations. What I select is what I get, so that's cool. Also, I can see exactly how much it costs before I commit."
+Q4: Have you experienced any challenges?
+"The worst is when the tablet freezes up mid-order and I have to flag someone down to reset it. Also, I hate that I can't split payment between cards. My girlfriend and I like to split the bill but we can't do that on the tablet."
+Q5: How do you feel about entering your phone number?
+"I'm fine with it. The text when my drink is ready is clutch because I can just chill on my phone instead of hovering around the pickup counter. I've never gotten any spam from them either, just my order notification."
+Q6: When customizing your drink, how easy is it to find options?
+"The ice and sugar levels are easy, but I wish the toppings section was better. Sometimes I want to add multiple toppings but it's not obvious how to do that. I had to ask for help the first time."
+Q7: If you could improve one thing, what would it be?
+"The order status thing needs work. I get a text that my drink is ready, but when I go up, half the time it's not actually done yet. There should be a display showing order numbers and their status so I know where mine is in the queue."
+Personas Based on User Research
+Persona 1: Efficiency-Focused Student
+Headline: The busy student who values speed and minimal interaction
+Description: Jordan is a 20-year-old junior who frequently visits Ten One Tea House between packed class schedules. They prioritize efficiency and independence in their ordering experience, preferring technology that minimizes social interaction and maximizes speed. Jordan struggles with unclear navigation elements and gets frustrated when technical glitches force them to seek staff assistance.
+Empathy Map:
+THINKS:
+•	"I don't have time to wait in line or chat with cashiers."
+•	"Why can't I just quickly fix my mistake without starting over?"
+•	"I wish the system remembered what I usually order."
+•	"This is probably faster than explaining my order to a person."
+•	"I hope I don't mess up my customizations."
+FEELS:
+•	Impatient when the tablet responds slowly
+•	Annoyed when forced to interact with staff due to system issues
+•	Satisfied when completing an order quickly and independently
+•	Anxious about time when between classes
+•	Relieved to avoid social interaction when tired
+•	Frustrated when navigation isn't intuitive
+SAYS:
+•	"I prefer the tablet because it's faster than talking to someone."
+•	"I never enter my phone number - I don't want more spam texts."
+•	"The back button doesn't work right; it's super annoying."
+•	"I like being able to see all my options at once."
+•	"I wish I could just edit one item instead of starting over."
+DOES:
+•	Skips the phone number entry step
+•	Orders quickly with minimal customization when in a hurry
+•	Gets frustrated and may abandon order if the system freezes
+•	Avoids asking staff for help unless absolutely necessary
+•	Checks order carefully before finalizing to avoid mistakes
+•	Uses the tablet even when counter service is available
+Interface Problems:
+•	Cannot easily correct mistakes or remove individual items
+•	Lacks intuitive navigation like functional back buttons
+•	System responsiveness issues create friction in the experience
+•	No quick reorder functionality for regular customers
+Representation Explanation: Jordan represents users who value the tablet primarily for its efficiency and the independence it provides. This persona captures the desire for minimal social interaction combined with maximum control over the ordering process, reflecting patterns observed across younger users who are comfortable with technology but have limited time between academic commitments.
+Persona 2: Customization-Focused Regular
+Headline: The loyal customer who values personalization and rewards
+Description: Riley is a 21-year-old senior who visits Ten One Tea House as part of their weekly routine. They appreciate the ability to precisely customize drinks and participate in the rewards program, but often wishes for better organization of options and improved order status communication. Riley balances their desire for efficiency with their interest in exploring new menu items.
+Empathy Map:
+THINKS:
+•	"I wonder if there are any new seasonal drinks today."
+•	"Which combination of toppings would taste best with this?"
+•	"I wish I could see where my order is in the queue."
+•	"I hope I have enough points for a free drink soon."
+•	"There must be a better way to organize these options."
+FEELS:
+•	Curious about new menu items and combinations
+•	Proud of accumulating reward points
+•	Confused by seemingly random organization of add-on options
+•	Hopeful when trying new customizations
+•	Disappointed when order status notifications are inaccurate
+•	Appreciated when recognized as a regular customer
+SAYS:
+•	"I put in my phone number for the rewards points."
+•	"I wish it would remember my usual order."
+•	"The text notification is helpful, but often my drink isn't actually ready."
+•	"I like seeing pictures of drinks I haven't tried before."
+•	"The topping selections could be organized better."
+DOES:
+•	Regularly enters phone number for rewards and notifications
+•	Spends time browsing seasonal specials before deciding
+•	Customizes drinks with multiple modifications
+•	Uses order notifications but verifies before approaching counter
+•	Tries new menu items occasionally
+•	Tolerates minor interface issues for the sake of personalization
+Interface Problems:
+•	Lack of saved favorites or order history
+•	Poor organization of customization options
+•	Unreliable order status communication
+•	No clear way to add multiple toppings intuitively
+•	Frequent marketing texts create notification fatigue
+Representation Explanation: Riley represents the loyal customers who value personalization and engage with the rewards system despite its flaws. This persona illustrates the balance between efficiency and exploration, demonstrating how regular customers develop workarounds for interface limitations while continuing to engage with the full range of features. The persona captures the frustration with organization and communication issues that even loyal customers experience.
+Frame 1: Approaching the Counter
+Jordan rushes into Ten One Tea House between classes, noticing the line at the counter. With a relieved expression, they spot an available tablet ordering kiosk and head straight for it, bypassing the queue.
+Frame 2: Navigating the Menu
+Jordan skips the phone number entry and quickly navigates to the "Fruit Tea" category. They scan through options with focused efficiency, tapping on their usual passion fruit tea. A thought bubble shows: "Found it quickly - perfect!"
+Frame 3: Customization Challenge
+While customizing their drink, Jordan accidentally selects the wrong ice level. They try tapping the back button repeatedly but it doesn't respond. Their expression shows clear frustration as they think: "Why won't this work? Now I have to start over!"
+Frame 4: Starting Over
+With an anxious glance at the time, Jordan navigates back to the menu and carefully reselects their drink. This time they methodically choose "Less Ice" and add lychee jelly, concentrating intensely to avoid making another mistake.
+Frame 5: Checkout and Payment
+Jordan reviews their order at checkout, quickly confirms everything is correct, and taps their credit card on the payment terminal. The screen displays "Order #42" with a confirmation message.
+Frame 6: Missing Their Order
+In the busy shop, Jordan waits while checking emails on their phone. They don't hear when their number is called. After realizing several minutes have passed, they approach the counter looking concerned and discover their drink has been sitting there.
+Frame 7: Departure Thoughts
+As Jordan rushes out with their drink, a thought bubble reveals: "The ordering was quick, but I wish there was a better way to know when my drink was ready. Still got my perfect tea though - might make it to class on time!"
+
+
