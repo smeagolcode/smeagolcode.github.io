@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heng Thai & Maha Heng - Authentic Thai Street Food</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6a1e395fae.js" crossorigin="anonymous"></script>
+    <!-- Backup Font Awesome in case the kit doesn't load -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Heng Thai <span>&</span> Maha Heng</h1>
+            </div>
+            <nav class="main-nav" id="mainNav">
+                <button class="mobile-menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Catering</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="display">Thai Street Food</h2>
+            <p>Journey to the vibrant streets of Thailand through our carefully crafted recipes.</p>
+            <div class="hero-buttons">
+                <a href="#order" class="btn btn-primary">Order Now</a>
+                <a href="#menu" class="btn btn-secondary">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="heading-1">Welcome to Heng and Maha Heng</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="body-text">We are Thai street food people. Each of our dishes is a journey to the vibrant streets of Thailand. Visit us to experience the flavors of our carefully crafted recipes.</p>
+                        <p class="body-text">We have two venues at the same location, catering to your preferences. Maha Heng is on the ground floor, and Heng locates at the basement. While both have an identical menu- each has its distinctive vibe and a few items unique to its space. So explore both!</p>
+                    </div>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>165 Angell Street, Providence, RI</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <p>Tuesday to Sunday (closed on Monday)<br>
+                            11:30 am-3:00 pm;<br>
+                            4:30 pm- 9:00 pm.</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p><a href="tel:401-7511651">401-751-1651</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="order" class="section">
+            <div class="container">
+                <h2 class="heading-1">Ordering</h2>
+                <div class="order-options">
+                    <div class="card">
+                        <div class="card-image">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Pick-Up</h4>
+                            <p>You can place an online orders or call us for pick-up orders.</p>
+                            <button class="btn btn-secondary">Order</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Dine-In/Catering</h4>
+                            <p>Please call for reservation or catering. No outside food or drink is allowed in the restaurant.</p>
+                            <button class="btn btn-secondary">Call</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <i class="fas fa-bicycle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Delivery</h4>
+                            <p>Place a delivery order through our third-party partners, including Uber Eats, DoorDash, and GrubHub</p>
+                            <button class="btn btn-secondary">Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="section menu-section">
+            <div class="container">
+                <h2 class="heading-1">Our Menu</h2>
+                <div class="menu-intro">
+                    <p class="body-text">This menu is available at both Heng and Maha Heng. 20% Gratuity may be added to parties of 5 people or more. Please inform your server of allergies you may have.</p>
+                    <p class="small-text">* little spicy, ** medium spicy, *** very spicy</p>
+                </div>
+                
+                <div class="menu-categories">
+                    <button class="menu-category active" data-category="appetizers">Appetizers</button>
+                    <button class="menu-category" data-category="special-noodle">Special Noodle</button>
+                    <button class="menu-category" data-category="spicy-bites">Spicy Bites</button>
+                    <button class="menu-category" data-category="curry">Curry</button>
+                    <button class="menu-category" data-category="fried-rice">Fried Rice & Noodle</button>
+                </div>
+                
+                <div class="menu-items" id="menu-container">
+                    <!-- Appetizers Section -->
+                    <div class="menu-category-items active" id="appetizers">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Crispy Spring Roll (5 pcs.)</h4>
+                                <span class="price">$10.95</span>
+                            </div>
+                            <p>Crispy rolls filled with cabbage, glass noodle, mushroom, carrot with guava vinaigrette.</p>
+                            <span class="dietary">vegan</span>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Moo Ping (4pcs)</h4>
+                                <span class="price">$10.95</span>
+                            </div>
+                            <p>Grilled marinated pork on the skewer.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Chili Wings * (5pcs)</h4>
+                                <span class="price">$10.95</span>
+                            </div>
+                            <p>Spicy and sweet chicken wings.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Chicken Satay (4pcs)</h4>
+                                <span class="price">$12.95</span>
+                            </div>
+                            <p>Grilled coconut marinated chicken with peanut butter cream sauce and cucumber sweet sauce.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Thai Rotisserie Chicken</h4>
+                                <span class="price">$10.95</span>
+                            </div>
+                            <p>Half Bone-in Thai-style grilled chicken.</p>
+                            <span class="dietary">gluten free</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Special Noodle Section -->
+                    <div class="menu-category-items" id="special-noodle">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Tom Yum Noodle Soup **</h4>
+                                <span class="price">$18.95</span>
+                            </div>
+                            <p>Spicy rice noodle soup with bean sprout, scallion, cilantro, fish ball, sliced pork, ground pork, crispy wonton, hard-boiled egg, fresh lime juice, and toasted garlic.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Kao Soi *</h4>
+                                <span class="price">$18.95</span>
+                            </div>
+                            <p>Northern Thai-style yellow curry with chicken drumstick, soft egg noodle, pickle, red onion, scallion, cilantro, toasted garlic, and crispy noodle.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Duck Noodle Soup</h4>
+                                <span class="price">$20.95</span>
+                            </div>
+                            <p>Slow-cooked duck leg with five spices, soft egg noodle, Chinese broccoli, scallion, garlic, and cilantro.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Spicy Bites Section -->
+                    <div class="menu-category-items" id="spicy-bites">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Papaya Salad **</h4>
+                                <span class="price">$13.95</span>
+                            </div>
+                            <p>Spicy green papaya salad with shrimp, green bean, tomato, garlic, and peanut.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Larb (Chicken or Pork) **</h4>
+                                <span class="price">$13.95</span>
+                            </div>
+                            <p>Minced chicken or pork, toasted rice powder, mint, red & green onion, bird's eye chili, and fresh lime juice.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Spicy Grilled Beef Salad **</h4>
+                                <span class="price">$14.95</span>
+                            </div>
+                            <p>Grilled sliced steak, sweet peppers, mint, red & green onion, and mushroom with pikpow lime dressing.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Curry Section -->
+                    <div class="menu-category-items" id="curry">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Yellow Curry *</h4>
+                                <span class="price">$18.95+</span>
+                            </div>
+                            <p>Pineapple chunks, squash, bell peppers, onion, carrot, and curry powder, served with white rice.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Massaman Curry *</h4>
+                                <span class="price">$18.95+</span>
+                            </div>
+                            <p>Potatoes, onion, carrot, and roasted peanut, served with white rice.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Green Curry *</h4>
+                                <span class="price">$18.95+</span>
+                            </div>
+                            <p>String bean, bamboo shoot, zucchini, bell peppers, eggplant, and sweet basil, served with white rice.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Panang Curry</h4>
+                                <span class="price">$18.95+</span>
+                            </div>
+                            <p>String bean and bell peppers, served with white rice.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Fried Rice and Noodle Section -->
+                    <div class="menu-category-items" id="fried-rice">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Pad Thai</h4>
+                                <span class="price">$17.95+</span>
+                            </div>
+                            <p>Rice noodle, egg, scallion, turnip, bean sprouts, and minced peanut.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Pad C-U</h4>
+                                <span class="price">$17.95+</span>
+                            </div>
+                            <p>Wide rice noodle, Chinese broccoli, and egg.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Pad Kee Mow **</h4>
+                                <span class="price">$17.95+</span>
+                            </div>
+                            <p>Wide rice noodle, onion, egg, bell peppers, and sweet basil.</p>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h4>Heng Fried Rice</h4>
+                                <span class="price">$17.95+</span>
+                            </div>
+                            <p>Egg, onion, carrot, peas, tomatoes and scallion.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-footer">
+                    <p class="small-text">Prices are subject to change without notice due to market fluctuations and other factors.</p>
+                    <a href="#" class="btn btn-text">View Full Menu</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="heading-1">Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>165 Angell Street<br>Providence, RI 02906</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p><a href="tel:401-751-1651">401-751-1651</a><br>
+                            <a href="tel:401-228-9555">401-228-9555</a></p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p><a href="mailto:hengpvd@gmail.com">hengpvd@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <div class="form-element">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-element">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-element">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button class="btn btn-primary">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Heng Thai & Maha Heng</h3>
+                    <p>Authentic Thai Street Food</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#">Menu</a>
+                    <a href="#">Order</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Heng Thai & Maha Heng. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

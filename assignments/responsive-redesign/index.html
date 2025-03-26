@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍜 Responsive Redesign | CS1300 Portfolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .full-width-figure {
+            width: 100%;
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .full-width-figure img {
+            width: 100%;
+            max-height: 800px;
+            object-fit: contain;
+        }
+        
+        .full-width-figure figcaption {
+            text-align: center;
+            margin-top: var(--spacing-sm);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .issues-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-lg) 0;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .issues-table th, .issues-table td {
+            border: 1px solid #e0e0e0;
+            padding: var(--spacing-md);
+            text-align: left;
+        }
+        
+        .issues-table th {
+            background-color: var(--background-accent);
+            font-weight: bold;
+        }
+        
+        .design-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .design-image {
+            background-color: var(--background-card);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+        
+        .design-image:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .design-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+        
+        .design-image figcaption {
+            margin-top: var(--spacing-sm);
+            text-align: center;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .platform-views {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .platform-view {
+            background-color: var(--background-card);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+        
+        .platform-view:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .platform-view img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+        
+        .platform-view h4 {
+            margin: var(--spacing-sm) 0;
+            color: var(--text-primary);
+        }
+        
+        .improvement-section {
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .improvement-section img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            margin: var(--spacing-md) 0;
+        }
+        
+        /* Modal for image viewing */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 1001;
+        }
+        
+        .close:hover, .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        h2 {
+            text-align: left;
+        }
+
+        .emphasis {
+            background-color: var(--background-accent);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-primary);
+            margin: var(--spacing-md) 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <a href="../../" class="back-link" style="display: inline-block; margin-bottom: 15px; color: var(--primary-color); text-decoration: none;">← Back to Home</a>
+            <h1>🍜 Responsive Redesign</h1>
+            <p class="subtitle">Transforming a Local Restaurant's Web Presence</p>
+        </div>
+    </header>
+
+    <nav class="table-of-contents">
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#original-website">Original Website</a></li>
+            <li><a href="#issues">Current Issues</a></li>
+            <li><a href="#accessibility">Accessibility Analysis</a></li>
+            <li><a href="#design-guidelines">Design Guidelines</a></li>
+            <li><a href="#mockups">Design Mockups</a></li>
+            <li><a href="#implementation">Final Implementation</a></li>
+        </ul>
+    </nav>
+
+    <main style="margin-top: 0px;" class="container">
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+                Hi everyone! Today we will be redesigning the webpage of a local restaurant near my school called <span class="highlight">Heng Thai</span> 
+                that features southeast Asian foods. It's a popular hub for students, but its current website has rather outdated design 
+                as well as some key accessibility issues.
+            </p>
+            
+            <p>Our redesign journey will follow these steps:</p>
+            <ol>
+                <li><span class="highlight">Identification of issues</span> with the current website</li>
+                <li><span class="highlight">Design guide & mockups</span> for the new design</li>
+                <li>A brief overview of the new implementation and discussion on how the new design <span class="highlight">addresses the problems</span> we identified</li>
+            </ol>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1120.924039370331!2d-71.40229370577524!3d41.828088050388224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e445234eefc12b%3A0x4aac0e4b06b5d723!2sHeng%20Thai%20%26%20Rotisserie!5e0!3m2!1sen!2sus!4v1743016315998!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            
+            <p class="emphasis">
+                Let's transform this restaurant's web presence into something as delicious as their food! 🌶️
+            </p>
+        </section>
+
+        <section id="original-website">
+            <h2>Original Website</h2>
+            <p>
+                Before we dive into the redesign process, let's take a look at the <a href="https://www.hengpvd.com/" target="_blank"><span class="highlight">original website</span></a> across different devices.
+                This will help us understand how the current design responds (or fails to respond) to different screen sizes.
+                <span class="highlight">Throughout the entire page, click on any image to see it in full size!</span>
+            </p>
+            
+            <div class="platform-views">
+                <div class="platform-view">
+                    <h4>Laptop View</h4>
+                    <div class="image-placeholder">
+                        <img src="./images/laptop-view.png" alt="Original website on laptop" data-original="original-laptop-view.jpg">
+                    </div>
+                    <p>The desktop version shows all menu items at once, creating excessive scrolling.</p>
+                </div>
+                
+                <div class="platform-view">
+                    <h4>Tablet View</h4>
+                    <div class="image-placeholder">
+                        <img src="./images/tablet-view.png" alt="Original website on tablet" data-original="original-tablet-view.jpg">
+                    </div>
+                    <p>The tablet layout has inconsistent element sizing and spacing issues.</p>
+                </div>
+                
+                <div class="platform-view">
+                    <h4>Mobile View</h4>
+                    <div class="image-placeholder">
+                        <img src="./images/mobile-view.png" alt="Original website on mobile" data-original="original-mobile-view.jpg">
+                    </div>
+                    <p>The mobile experience features a completely different menu approach, using PDF instead of HTML.</p>
+                </div>
+            </div>
+            <p>
+                Alternatively, you can view the <a href="https://www.hengpvd.com/" target="_blank"><span class="highlight">original website</span></a>.
+            </p>
+        </section>
+
+        <section id="issues">
+            <h2>Current Issues</h2>
+            <p>
+                Let's identify problems with the current design of Heng Thai's website. My analysis centers around 
+                <span class="highlight">efficiency, learnability, memorability</span>, and the <span class="highlight">conceptual model</span> 
+                users develop when using the webpage. Please expand the accordion below to see the full table and click on any image to see it in full size!
+            </p>
+            
+            <div class="accordion-container">
+                <details class="platform-details">
+                    <summary>Usability Issues Table</summary>
+                    <div>
+                        <table class="issues-table">
+                            <thead>
+                                <tr>
+                                    <th>Issue Type</th>
+                                    <th>Screenshot</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Efficiency</td>
+                                    <td>
+                                        <img src="./images/efficiency-1.png" alt="Redundant buttons" data-original="efficiency-1.jpg" style="max-width: 300px; cursor: pointer;">
+                                    </td>
+                                    <td>When users first enter the laptop webpage, they immediately have the option to order. However, there are <span class="highlight">redundant buttons for ordering</span>, both leading users to the same page.</td>
+                                </tr>
+                                <tr>
+                                    <td>Efficiency</td>
+                                    <td>
+                                        <img src="./images/efficiency-2.png" alt="Social media icons" data-original="efficiency-2.jpg" style="max-width: 300px; cursor: pointer;">
+                                    </td>
+                                    <td>When users access the website from their mobile devices, Facebook and Instagram icons <span class="highlight">always show on the top menu bar</span>. However, this emphasis was not shown in either the laptop or the tablet interface.</td>
+                                </tr>
+                                <tr>
+                                    <td>Conceptual Model</td>
+                                    <td>
+                                        <img src="./images/conceptual-1.png" alt="Scrolling issue" data-original="conceptual-1.jpg" style="max-width: 300px; cursor: pointer;">
+                                    </td>
+                                    <td>After users get to the end of the page, they can see contact information of the restaurant. However, the page <span class="highlight">allows users to keep scrolling</span> despite there being no additional content. This challenges the usual conceptual model of web page browsing, misleading users to think that there is still more content in the page when there is not.</td>
+                                </tr>
+                                <tr>
+                                    <td>Conceptual Model</td>
+                                    <td>
+                                        <img src="./images/conceptual-2.png" alt="Menu inconsistency" data-original="conceptual-2.jpg" style="max-width: 300px; cursor: pointer;">
+                                    </td>
+                                    <td>From desktop access, the menu items are displayed directly using HTML. However, if the users access the website from mobile devices, they will have to click on a "menu" button that redirects them to a different PDF page. This inconsistency between different platforms challenges the inherent conceptual model users might develop over time.</td>
+                                </tr>
+                                <tr>
+                                    <td>Learnability</td>
+                                    <td>
+                                        <img src="./images/learnability.png" alt="Third-party ordering" data-original="learnability.jpg" style="max-width: 300px; cursor: pointer;">
+                                    </td>
+                                    <td>If users want to order and pick-up online, they can click on this button from the website. However, this action also takes the users to a third-party website that is responsible for the ordering service.</td>
+                                </tr>
+                                <tr>
+                                    <td>Efficiency & Readability</td>
+                                    <td>
+                                        <img src="./images/readability.png" alt="Font color issues" data-original="readability.jpg" style="max-width: 300px; cursor: pointer;">
+                                    </td>
+                                    <td>Some of the font colors are <span class="highlight">clashing with the background logo</span>, making text hard to read, and thereby reducing the efficiency.</td>
+                                </tr>
+                                <tr>
+                                    <td>Efficiency</td>
+                                    <td>
+                                        <img src="./images/conceptual-2.png" alt="Menu organization" data-original="efficiency-3.jpg" style="max-width: 300px; cursor: pointer;">
+                                    </td>
+                                    <td>Another issue with the desktop version of menu display is that all items from the menu are <span class="highlight">shown all at once on the home page</span>, making users have to scroll for a long time to get to the section they want. Perhaps we can use categorization to make the website more minimal.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section id="accessibility">
+            <h2>Accessibility Analysis</h2>
+            <p>
+                Using <a href="https://wave.webaim.org/" target="_blank"><span class="highlight">WAVE (Web Accessibility Evaluation Tool)</span></a>, I identified a couple of key accessibility issues:
+            </p>
+            
+            <div class="emphasis">
+                <ol>
+                    <li><strong>Redundant links</strong> - this aligns with my previous observations too. For example, from the phone access, there are at least 3 different links that the users can click on to order food.</li>
+                    <li><strong>Misleading text styling</strong> - WAVE identified several places with underlined texts that do not serve as links. This also challenges the user's conceptual model.</li>
+                </ol>
+            </div>
+            
+            <p>
+                Both of these issues identified using WAVE resulted in a <span class="highlight">cluttered page design</span>. 
+                I suppose the main purpose of people visiting this website is to view the menu as well as placing their orders. 
+                There is just way too much content, making the overall experience overwhelming and tedious.
+            </p>
+        </section>
+
+        <section id="design-guidelines">
+            <h2>Visual Redesign - Design Guidelines</h2>
+            <p>
+                Now, let's check out our brand new design for Heng Thai! Below is a snapshot of the entire visual design guideline.
+            </p>
+            
+            <figure class="full-width-figure">
+                <img src="./images/design-guideline.png" alt="Design Guideline Overview" data-original="design-guide.jpg">
+                <figcaption>Complete visual design guideline for Heng Thai's website redesign</figcaption>
+            </figure>
+            
+            <p>
+                For your valuable time, I will not be going over every detail in this design guideline. 
+                Instead, let's discuss some essential choices I made when creating the new design.
+            </p>
+            
+            <div class="accordion-container">
+                <details class="platform-details">
+                    <summary>Color Palette</summary>
+                    <div>
+                        <p>
+                            I chose colors that match well with the Thai theme. These colors are found mainly from the common 
+                            ingredients used in Thai cuisines. For example, <span class="highlight">green curry, mango, and chili</span> 
+                            inspired the color palette, creating an appetizing and culturally relevant visual experience.
+                        </p>
+                        <div class="image-placeholder">
+                            <img src="./images/colors.png" alt="Color Palette" data-original="colors.jpg" style="max-width: 100%; border-radius: var(--border-radius);">
+                        </div>
+                    </div>
+                </details>
+                
+                <details class="platform-details">
+                    <summary>Icons and Visual Elements</summary>
+                    <div>
+                        <p>
+                            For icons, I chose common symbols that are intuitive to most users. Icons, when used appropriately, 
+                            emphasize options for users, thereby increasing the efficiency of using the webpage. 
+                            These visual shortcuts reduce cognitive load and help users quickly identify key functions.
+                        </p>
+                        <div class="image-placeholder">
+                            <img src="./images/icons.png" alt="Icon Set" data-original="icons.jpg" style="max-width: 100%; border-radius: var(--border-radius);">
+                        </div>
+                    </div>
+                </details>
+                
+                <details class="platform-details">
+                    <summary>Typography</summary>
+                    <div>
+                        <p>
+                            For simplicity, I am mainly using two fonts - <span class="highlight">Playfair Display and Poppins</span>. 
+                            Playfair Display creates a sense of elegance, potentially adding to the perceived quality of the restaurant,
+                            while Poppins provides clear readability for body text and menu items.
+                        </p>
+                        <div class="image-placeholder">
+                            <img src="./images/typography.png" alt="Typography Samples" data-original="typography.jpg" style="max-width: 100%; border-radius: var(--border-radius);">
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section id="mockups">
+            <h2>Visual Redesign - Design Mockups</h2>
+            <p>
+                I created two sets of design mockups for 3 different screen sizes (desktop, tablet, and mobile) using Figma, 
+                a tool that allows you to create prototypes for web UI. The two sections that I created mockups for are the 
+                <span class="highlight">page entry point</span> and the <span class="highlight">menu section</span>. 
+                I also added annotations to the mockups to explain the design choices I made for better reproducibility.
+                Click on them to see them in full size!
+            </p>
+            
+            <div class="design-images">
+                <figure class="design-image">
+                    <img src="./images/page-entry.png" alt="Desktop Mockup" data-original="desktop-mockup.jpg">
+                    <figcaption>Page Entry Point Mockup</figcaption>
+                </figure>
+                
+                <figure class="design-image">
+                    <img src="./images/menu.png" alt="Tablet Mockup" data-original="tablet-mockup.jpg">
+                    <figcaption>Menu Section Mockup</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="implementation">
+            <h2>Final Implementation</h2>
+            <p>
+                Now, let's go over some of the details of the new design! <span class="highlight">You could (and should) visit the new page via this <a href="redesign/hengthai.html" target="_blank"><span class="highlight">link</span></a>.</span> 
+                Below I will talk about how the new design addresses the issues we identified in the first section.
+            </p>
+            
+            <div class="improvement-section">
+                <h3>Enhanced Readability</h3>
+                <img src="./images/new-design.png" alt="New Website Design Overview" data-original="new-design.jpg">
+                <p>
+                    The biggest improvement I wanted to bring to Heng Thai is <span class="highlight">readability</span>. 
+                    The original website introduced too many colors, making it overwhelming for users. 
+                    In addition, the contrast between colors was also horrible! Therefore, the new design features this 
+                    clean look with solid color backgrounds, making the webpage a lot more readable.
+                </p>
+            </div>
+            
+            <div class="improvement-section">
+                <h3>Better Menu Organization</h3>
+                <img src="./images/menu-section.png" alt="New Menu Design" data-original="menu-section.jpg">
+                <p>
+                    Another key improvement that I implemented was the <span class="highlight">menu section</span>. 
+                    Previously, we were showing all the menu items all at once. Since there are many individual items, 
+                    users had to scroll for a long time to get to a category they wanted. Now, we use buttons for each 
+                    category on the menu. Users can <span class="highlight">click on one of the buttons to see the items in a category</span>. 
+                    Alternatively, if they wish to see the full menu PDF, they can click on a link right below this section.
+                </p>
+            </div>
+            
+            <div class="improvement-section">
+                <h3>More Intuitive Ordering Options</h3>
+                <img src="./images/ordering-section.png" alt="New Ordering Options" data-original="ordering-section.jpg">
+                <p>
+                    Another improvement I made was the ordering section. Now, users have 3 obvious options to:
+                </p>
+                <ol>
+                    <li>Pick up</li>
+                    <li>Dine in</li>
+                    <li>Delivery</li>
+                </ol>
+                <p>
+                    This is also one of the parts where I <span class="highlight">deviated from the design guideline</span>. Initially, I planned to use cards 
+                    for food items. However, it is hard to fit a decent number of menu items into a single page. Therefore, 
+                    I shifted the use of cards to the ordering section.
+                </p>
+            </div>
+            
+            <p class="emphasis">
+                By addressing the key issues of readability, organization, and consistency across devices, 
+                the new design creates a more pleasant and efficient experience for Heng Thai's customers. 
+                The responsive implementation ensures that whether you're browsing on a desktop, tablet, or 
+                phone, you'll get the same high-quality experience! 🎉
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>CS1300: User Interfaces and User Experience - Brown University</p>
+        </div>
+    </footer>
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Modal functionality for image viewing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the modal
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementsByClassName('close')[0];
+            
+            // Get all images that should be clickable
+            const images = document.querySelectorAll('img[data-original]');
+            
+            // Add click event to all images
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = "block";
+                    modalImg.src = this.src.replace('placeholder-', ''); // In real use, would use data-original
+                });
+            });
+            
+            // Close the modal when clicking the × symbol
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+            
+            // Close the modal when clicking outside the image
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === "Escape" && modal.style.display === "block") {
+                    modal.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
