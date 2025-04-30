@@ -3,145 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSCI 1300 | Interaction Design</title>
+    <title>Zhongzheng Xu | Interaction Design Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="index-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body class="index-page">
-    <header class="hero">
-        <div class="container">
-            <h1>CSCI 1300: Interaction Design</h1>
-            <p class="subtitle">Projects & Assignments by Zhongzheng Xu</p>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="nav-logo">ZX</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <main class="container">
-        <section class="course-description">
-            <p>Welcome to my CSCI 1300 portfolio! This course explores fundamental principles of interaction design, 
-            user experience, and usability testing. Below are my projects and assignments completed throughout the semester.</p>
+    <main>
+        <section id="home" class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Zhongzheng Xu 👋</h1>
+                    <p class="typewriter">I love <span class="typewriter-text"></span></p>
+                    
+                    <p>
+                        I am a second-year computer science <b>master's student</b> at <a href="https://www.brown.edu/" class="custom-link">Brown University</a>. 
+                    </p>
+
+                    <p>
+                        Currently, I am working under <a href="https://jeffhuang.com/" class="custom-link">Dr. Jeff Huang</a> at <a href="https://hci.cs.brown.edu/" class="custom-link">Brown HCI Lab</a>. We are exploring the effect of visualizations on people's self-reflection over their personal text data.
+                    </p>
+                    
+                    <p>
+                        To pronounce my name, think of it like "John Jane Shoe". In my free time, I like being a barista and photographer. 
+                    </p>
+                    
+                    <a href="#projects" class="cta-button">View Projects</a>
+                </div>
+                <div class="hero-image">
+                    <!-- Placeholder for an image -->
+                    <img src="images/hello.png" alt="Placeholder profile image">
+                </div>
+            </div>
         </section>
 
-        <section class="assignments-grid">
-            <!-- Radio Buttons Case Study -->
-            <article class="assignment-card">
-                <div class="semester-indicator">Spring 2025</div>
-                <img src="images/youtube.png" alt="Radio Buttons Redesign" onerror="this.src='https://via.placeholder.com/300x180?text=Radio+Buttons+Redesign'">
-                <div class="content">
-                    <h3>Radio Buttons Redesign</h3>
-                    <p>A case study examining YouTube's video quality selector, analyzing its accessibility pitfalls and proposing an improved design.</p>
-                    <div>
-                        <span class="tag">Case Study</span>
-                        <span class="tag">Accessibility</span>
-                        <span class="tag">UI Components</span>
-                    </div>
-                    <p><a href="assignments/radio-buttons-case-study/" class="view-btn">View Project</a></p>
-                </div>
-            </article>
-            
-            <!-- Personas and Storyboarding -->
-            <article class="assignment-card">
-                <div class="semester-indicator">Spring 2025</div>
-                <img src="assignments/personas-and-storyboarding/images/shop-exterior.jpg" alt="Personas and Storyboarding" onerror="this.src='https://via.placeholder.com/300x180?text=Personas+and+Storyboarding'">
-                <div class="content">
-                    <h3>Personas and Storyboarding</h3>
-                    <p>Understanding users through observation, interviews, and storytelling to create representative personas and illustrative storyboards.</p>
-                    <div>
-                        <span class="tag">User Research</span>
-                        <span class="tag">Personas</span>
-                        <span class="tag">Storyboarding</span>
-                    </div>
-                    <p><a href="assignments/personas-and-storyboarding/" class="view-btn">View Project</a></p>
-                </div>
-            </article>
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project Card 1: Radio Buttons -->
+                    <article class="project-card">
+                        <img src="images/cover_0.png" alt="Radio Buttons Redesign Preview" class="project-image" onerror="this.src='https://via.placeholder.com/300x180?text=Radio+Buttons'">
+                        <div class="project-content">
+                            <h3>Radio Buttons Redesign</h3>
+                            <p>A case study examining YouTube's video quality selector and proposing accessibility improvements.</p>
+                            <div class="tags">
+                                <span class="tag">Case Study</span>
+                                <span class="tag">Accessibility</span>
+                            </div>
+                            <a href="assignments/radio-buttons-case-study/" class="view-btn">View Project &rarr;</a>
+                        </div>
+                    </article>
 
-            <article class="assignment-card">
-                <div class="semester-indicator">Spring 2025</div>
-                <img src="assignments/responsive-redesign/images/colors.png" alt="Responsive Redesign" onerror="this.src='https://via.placeholder.com/300x180?text=Responsive+Redesign'">
-                <div class="content">
-                    <h3>Responsive Redesign</h3>
-                    <p>Redesigning a local restaurant's website to improve its accessibility and user experience.</p>
-                    <div>
-                        <span class="tag">Responsive Design</span>
-                        <span class="tag">Accessibility</span>
-                        <span class="tag">Redesign</span>
-                    </div>
-                    <p><a href="assignments/responsive-redesign/" class="view-btn">View Project</a></p>
+                    <!-- Project Card 2: Personas -->
+                    <article class="project-card">
+                        <img src="images/cover_1.png" alt="Personas and Storyboarding Preview" class="project-image" onerror="this.src='https://via.placeholder.com/300x180?text=Personas'">
+                        <div class="project-content">
+                            <h3>Personas & Storyboarding</h3>
+                            <p>Developing user understanding through observation, interviews, personas, and storyboards.</p>
+                            <div class="tags">
+                                <span class="tag">User Research</span>
+                                <span class="tag">Personas</span>
+                            </div>
+                            <a href="assignments/personas-and-storyboarding/" class="view-btn">View Project &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 3: Responsive Redesign -->
+                    <article class="project-card">
+                         <img src="images/cover_2.png" alt="Responsive Redesign Preview" class="project-image" onerror="this.src='https://via.placeholder.com/300x180?text=Redesign'">
+                        <div class="project-content">
+                            <h3>Responsive Redesign</h3>
+                            <p>Improving the accessibility and user experience of a local restaurant's website.</p>
+                             <div class="tags">
+                                <span class="tag">Responsive Design</span>
+                                <span class="tag">Accessibility</span>
+                             </div>
+                            <a href="assignments/responsive-redesign/" class="view-btn">View Project &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 4: Placeholder -->
+                     <article class="project-card placeholder">
+                         <img src="images/coming_soon.png" alt="Coming Soon Preview" class="project-image" onerror="this.src='https://via.placeholder.com/300x180?text=Coming+Soon'">
+                         <div class="project-content">
+                             <h3>Future Project</h3>
+                             <p>More exciting work coming soon!</p>
+                             <div class="tags">
+                                <span class="tag">In Progress</span>
+                             </div>
+                             <a href="#" class="view-btn disabled">Coming Soon</a>
+                        </div>
+                     </article>
                 </div>
-            </article>
-            
-            <!-- Placeholder for future assignments -->
-            <article class="assignment-card">
-                <div class="semester-indicator">Coming Soon</div>
-                <img src="images/comingsoon.avif" alt="Future Assignment">
-                <div class="content">
-                    <h3>Future Assignment</h3>
-                    <p>This assignment is still in progress. Check back later to see the completed project!</p>
-                    <div>
-                        <span class="tag">In Progress</span>
-                    </div>
-                    <p><a href="#" class="view-btn" style="background-color: #9ca3af;">Coming Soon</a></p>
+            </div>
+        </section>
+
+        <section id="publications" class="publications-section">
+            <div class="container">
+                <h2>Publications</h2>
+                <div class="publications-list">
+                    <!-- Publication 1 -->
+                    <article class="publication-item">
+                        <div class="publication-cover">
+                            <img src="images/paper_cover_0.png" alt="Exploring the Capability of LLMs Paper Cover">
+                        </div>
+                        <div class="publication-content">
+                            <h3>Exploring the Capability of LLMs in Performing Low-Level Visual Analytic Tasks on SVG Data Visualizations</h3>
+                            <div class="publication-meta">
+                                <p class="publication-authors">
+                                    <span class="author-name highlighted">Zhongzheng Xu</span>, Emily Wall
+                                </p>
+                                <p class="publication-venue">
+                                    <span class="venue-name">2024 IEEE Visualization and Visual Analytics (VIS)</span>
+                                    <span class="publication-date">April 29, 2024</span>
+                                </p>
+                                <p class="publication-pages">Pages: 126-130</p>
+                            </div>
+                            <p class="publication-description">
+                                Data visualizations help extract insights from datasets, but reaching these insights requires decomposing high level goals into low-level analytic tasks that can be complex due to varying degrees of data literacy and visualization experience. This research explores how large language models can perform visual analytic tasks directly on SVG-based visualizations.
+                            </p>
+                            <div class="publication-links">
+                                <a href="https://arxiv.org/pdf/2404.19097" class="publication-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                                <a href="https://ieeexplore.ieee.org/abstract/document/10771094" class="publication-link"><i class="fas fa-external-link-alt"></i> Publisher</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Publication 2 -->
+                    <article class="publication-item">
+                        <div class="publication-cover">
+                            <img src="images/paper_cover_1.png" alt="Let's Get Vysical Paper Cover">
+                        </div>
+                        <div class="publication-content">
+                            <h3>Let's Get Vysical: Perceptual Accuracy in Visual & Tactile Encodings</h3>
+                            <div class="publication-meta">
+                                <p class="publication-authors">
+                                    <span class="author-name highlighted">Zhongzheng Xu</span>, Kristin Williams, Emily Wall
+                                </p>
+                                <p class="publication-venue">
+                                    <span class="venue-name">2023 IEEE Visualization and Visual Analytics (VIS)</span>
+                                    <span class="publication-date">October 21, 2023</span>
+                                </p>
+                                <p class="publication-pages">Pages: 16-20</p>
+                            </div>
+                            <p class="publication-description">
+                                This research explores the effectiveness of tactile data encodings using swell paper compared to visual encodings displayed with SVGs for data perception tasks. The study establishes a novel tactile encoding hierarchy and provides empirical evidence for the perceptual accuracy of tactile encodings.
+                            </p>
+                            <div class="publication-links">
+                                <a href="https://arxiv.org/pdf/2308.04392" class="publication-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                                <a href="https://ieeexplore.ieee.org/abstract/document/10360913" class="publication-link"><i class="fas fa-external-link-alt"></i> Publisher</a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-            </article>
-            
-            <!-- Another placeholder
-            <article class="assignment-card">
-                <div class="semester-indicator">Coming Soon</div>
-                <img src="https://via.placeholder.com/300x180?text=Upcoming+Project" alt="Upcoming Project">
-                <div class="content">
-                    <h3>Upcoming Project</h3>
-                    <p>Another upcoming project for CSCI 1300. Details will be available once the assignment is completed.</p>
-                    <div>
-                        <span class="tag">Upcoming</span>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-text">
+                        <h2>Get In Touch</h2>
+                        <p>Feel free to reach out if you'd like to collaborate or just say hello!</p>
+                        <div class="contact-links">
+                            <a href="mailto:zxu169@brown.edu" class="contact-link"><i class="fas fa-envelope"></i> Email</a>
+                            <a href="" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="path/to/your/cv.pdf" target="_blank" class="contact-link"><i class="fas fa-file-alt"></i> CV</a>
+                            <a href="https://scholar.google.com/citations?user=your_scholar_id" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                        </div>
                     </div>
-                    <p><a href="#" class="view-btn" style="background-color: #9ca3af;">Coming Soon</a></p>
+                    <div class="contact-image">
+                        <img src="images/get_in_touch.png" alt="Get in touch">
+                    </div>
                 </div>
-            </article> -->
+            </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>Created by <a href="https://lebretou.github.io/">Zhongzheng Xu</a> for <a href="https://cs.brown.edu/courses/csci1300/">CSCI 1300</a> at Brown University</p>
+            <p>&copy; 2025 Zhongzheng Xu. Built for CSCI 1300.</p>
         </div>
     </footer>
 
-    <script>
-        // Add smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Simple animation for assignment cards
-        const cards = document.querySelectorAll('.assignment-card');
-        
-        function checkIfInView() {
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const isInView = (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0);
-                
-                if (isInView) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
-            });
-        }
-        
-        // Initialize cards
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        });
-        
-        // Check if cards are in view on load and scroll
-        window.addEventListener('load', checkIfInView);
-        window.addEventListener('scroll', checkIfInView);
-    </script>
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>

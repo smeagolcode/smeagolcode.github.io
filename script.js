@@ -193,6 +193,81 @@ function handleTableOfContents() {
     setActiveLink(); // Set initial state
 }
 
+// Typewriter effect for hero section
+document.addEventListener('DOMContentLoaded', function() {
+    const texts = ['designing interfaces.', 'creating visualization systems.', 'exploring novel interactions.'];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    
+    function type() {
+        if (count === texts.length) {
+            count = 0;
+        }
+        currentText = texts[count];
+        letter = currentText.slice(0, ++index);
+        
+        document.querySelector('.typewriter-text').textContent = letter;
+        if (letter.length === currentText.length) {
+            // Pause at the end of the word
+            setTimeout(() => {
+                index = 0;
+                count++;
+                setTimeout(type, 500); // Delay before starting the next word
+            }, 2000); // How long to wait at the end of the word
+            return;
+        }
+        setTimeout(type, 100);
+    }
+    
+    // Start the effect when DOM is loaded
+    type();
+    
+    // Basic smooth scrolling for navbar links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Calculate offset dynamically if navbar is fixed/sticky
+                const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+
+// Add visible class to sections when they come into view
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        section.classList.add('fade-in-section');
+        observer.observe(section);
+    });
+});
+
 // Initialize when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize audio context
