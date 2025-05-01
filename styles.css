@@ -207,6 +207,7 @@ img {
     font-family: var(--heading-font);
     transition: background-color 0.2s ease;
     box-shadow: var(--shadow-sm);
+    margin-top: 1rem;
 }
 
 .cta-button:hover {
@@ -356,6 +357,14 @@ img {
     align-items: center;
     justify-content: center;
     height: 100%;
+    position: relative;
+    padding: 15px;
+    transform: rotate(-1deg);
+    transition: transform 0.2s ease;
+}
+
+.publication-cover:hover {
+    transform: rotate(0deg);
 }
 
 .publication-cover img {
@@ -363,8 +372,22 @@ img {
     max-width: 300px;
     height: auto;
     border-radius: 8px;
-    background-color: white;
-    box-shadow: var(--shadow-sm);
+    background-color: #fff7c0; /* Light yellow sticky note color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    border: 1px solid #e6d990;
+    position: relative;
+}
+
+.publication-cover img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.1) 50%);
+    border-bottom-left-radius: 8px;
 }
 
 .publication-content h3 {
